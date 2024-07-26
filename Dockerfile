@@ -12,8 +12,11 @@ WORKDIR /app
 # Copia los archivos de tu proyecto al directorio de trabajo
 COPY . .
 
+# Establece permisos de Gradle
+RUN chmod +x gradlew
+
 # Construye tu aplicación con Gradle
-RUN ./gradlew build
+RUN ./gradlew build --no-daemon
 
 # Cambia a una imagen más ligera de OpenJDK 17 para la ejecución
 FROM openjdk:17-jdk-slim
