@@ -2,6 +2,7 @@ FROM ubuntu:latest
 LABEL authors="Administrator"
 
 ENTRYPOINT ["top", "-b"]
+
 # Utiliza una imagen base con OpenJDK 17 y Gradle 7.4.0
 FROM gradle:7.4.0-jdk17 AS build
 
@@ -21,7 +22,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copia el archivo JAR de tu aplicación al directorio de trabajo
-COPY --from=build /app/build/libs/<nombre_jar_generado>.jar .
+COPY --from=build /app/build/libs/GithubAndRender-0.0.1-SNAPSHOT.jar .
 COPY --from=build /app/src/main/resources/application.properties .
 
 # Exponer el puerto que utilizará la aplicación
