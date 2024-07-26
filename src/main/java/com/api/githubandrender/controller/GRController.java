@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GRController {
 
-    @GetMapping("/hello/{name}")
+    @GetMapping("/render/{name}")
     public String getName(@PathVariable String name) {
         return "Hola " + name + "!!";
     }
